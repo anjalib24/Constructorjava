@@ -1,0 +1,148 @@
+In Java, a **constructor** is a special method used to initialize objects when they are created. It has the same name as the class and does not have a return type, not even `void`. Constructors are called automatically when an object is instantiated using the `new` keyword.
+
+ Key Features of Constructors
+
+1. **Initialization**:
+   - Constructors are primarily used to set initial values for object attributes.
+
+2. **No Return Type**:
+   - Unlike regular methods, constructors do not have a return type.
+
+3. **Same Name as Class**:
+   - The constructor’s name must match the class name.
+
+4. **Automatic Invocation**:
+   - Constructors are called automatically when an object is created.
+
+5. **Overloading**:
+   - A class can have multiple constructors with different parameters (constructor overloading).
+
+### Types of Constructors
+
+1. **Default Constructor**:
+   - A constructor that takes no arguments and initializes the object with default values. If no constructor is explicitly defined, Java provides a default constructor automatically.
+
+2. **Parameterized Constructor**:
+   - A constructor that takes parameters to initialize an object with specific values.
+
+### Examples
+
+#### 1. Default Constructor
+
+```java
+public class Car {
+    private String model;
+    private int year;
+
+    // Default constructor
+    public Car() {
+        model = "Unknown";
+        year = 0;
+    }
+
+    // Getter methods
+    public String getModel() {
+        return model;
+    }
+
+    public int getYear() {
+        return year;
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        // Create an instance using the default constructor
+        Car myCar = new Car();
+        System.out.println("Model: " + myCar.getModel());
+        System.out.println("Year: " + myCar.getYear());
+    }
+}
+```
+
+#### 2. Parameterized Constructor
+
+```java
+public class Car {
+    private String model;
+    private int year;
+
+    // Parameterized constructor
+    public Car(String model, int year) {
+        this.model = model;
+        this.year = year;
+    }
+
+    // Getter methods
+    public String getModel() {
+        return model;
+    }
+
+    public int getYear() {
+        return year;
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        // Create an instance using the parameterized constructor
+        Car myCar = new Car("Toyota Corolla", 2022);
+        System.out.println("Model: " + myCar.getModel());
+        System.out.println("Year: " + myCar.getYear());
+    }
+}
+```
+
+#### 3. Constructor Overloading
+
+```java
+public class Rectangle {
+    private int length;
+    private int width;
+
+    // Default constructor
+    public Rectangle() {
+        length = 0;
+        width = 0;
+    }
+
+    // Parameterized constructor
+    public Rectangle(int length, int width) {
+        this.length = length;
+        this.width = width;
+    }
+
+    // Getter methods
+    public int getLength() {
+        return length;
+    }
+
+    public int getWidth() {
+        return width;
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        // Create an instance using the default constructor
+        Rectangle rect1 = new Rectangle();
+        System.out.println("Rectangle 1 - Length: " + rect1.getLength() + ", Width: " + rect1.getWidth());
+
+        // Create an instance using the parameterized constructor
+        Rectangle rect2 = new Rectangle(10, 5);
+        System.out.println("Rectangle 2 - Length: " + rect2.getLength() + ", Width: " + rect2.getWidth());
+    }
+}
+```
+
+### Summary
+
+- **Purpose**: Constructors are used to initialize objects when they are created.
+- **No Return Type**: Constructors do not return values.
+- **Naming**: The name of the constructor must be the same as the class name.
+- **Types**:
+  - **Default Constructor**: Initializes with default values.
+  - **Parameterized Constructor**: Initializes with specific values.
+- **Overloading**: Allows multiple constructors with different parameters.
+
+Constructors play a crucial role in object creation and initialization, helping to ensure that objects start their life with a valid state.

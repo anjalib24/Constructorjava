@@ -1,0 +1,98 @@
+In Java, **constructor chaining** involves invoking one constructor from another constructor within the same class or from a superclass. The purpose is to reuse initialization logic and avoid redundancy.
+
+Here’s a detailed explanation of how constructor chaining works in Java:
+
+### Constructor Chaining within the Same Class
+
+When you have multiple constructors in the same class, you can call one constructor from another using the `this()` keyword. This is useful for initializing objects with different sets of parameters while avoiding code duplication.
+
+**Example**:
+
+```java
+public class Person {
+    private String name;
+    private int age;
+
+    // Default constructor
+    public Person() {
+        this("Unknown", 0); // Calls the parameterized constructor
+    }
+
+    // Parameterized constructor
+    public Person(String name, int age) {
+        this.name = name;
+        this.age = age;
+    }
+
+    // Method to display person details
+    public void display() {
+        System.out.println("Name: " + name);
+        System.out.println("Age: " + age);
+    }
+
+    public static void main(String[] args) {
+        Person person1 = new Person(); // Calls default constructor
+        Person person2 = new Person("Alice", 30); // Calls parameterized constructor
+
+        person1.display();
+        person2.display();
+    }
+}
+```
+
+### Constructor Chaining Across Superclass and Subclass
+
+When dealing with inheritance, you can use the `super()` keyword to call a constructor in the superclass from a subclass constructor. This ensures that the superclass is properly initialized before initializing the subclass.
+
+**Example**:
+
+```java
+// Superclass
+public class Animal {
+    private String name;
+
+    // Superclass constructor
+    public Animal(String name) {
+        this.name = name;
+    }
+
+    // Getter for name
+    public String getName() {
+        return name;
+    }
+}
+
+// Subclass
+public class Dog extends Animal {
+    private String breed;
+
+    // Subclass constructor
+    public Dog(String name, String breed) {
+        super(name); // Calls the superclass constructor
+        this.breed = breed;
+    }
+
+    // Method to display dog details
+    public void display() {
+        System.out.println("Name: " + getName()); // Calls the method from the superclass
+        System.out.println("Breed: " + breed);
+    }
+
+    public static void main(String[] args) {
+        Dog dog = new Dog("Buddy", "Golden Retriever"); // Calls subclass constructor
+        dog.display();
+    }
+}
+```
+
+### Summary of Constructor Chaining
+
+1. **Within the Same Class**:
+   - Use `this()` to call another constructor within the same class.
+   - Allows code reuse and reduces duplication by initializing common fields.
+
+2. **Across Superclass and Subclass**:
+   - Use `super()` to call a superclass constructor from a subclass.
+   - Ensures that the superclass part of the object is properly initialized.
+
+Constructor chaining enhances code readability and maintainability by centralizing the initialization logic and ensuring proper object setup across different constructors.
